@@ -1,0 +1,29 @@
+generated: '2026-07-18'
+method: searched
+source: https://documentation.commvault.com/clumio/release_notes_for_clumio.html
+versioning:
+  scheme: per-resource
+  detail: >-
+    The Clumio REST API is versioned by resource, not at the API level. Each resource is versioned
+    independently and may support multiple concurrent versions, negotiated through HAL/HATEOAS API
+    discovery so client scripts can evolve per resource.
+  docs: https://developers.clumio.com/reference/introduction
+deprecation:
+  policy_url: null
+  sunset_header: unknown
+  note: >-
+    No formal, published API deprecation policy or RFC 8594 Sunset/Deprecation header support was
+    found. Resource versioning allows old resource versions to remain available while new ones ship.
+release_notes:
+  url: https://documentation.commvault.com/clumio/release_notes_for_clumio.html
+  detail_artifact: changelog/clumio-changelog.yml
+status_page: https://status.clumio.com/
+sla:
+  url: null
+  note: SLA/uptime target not published on a public page; commercial terms via Commvault.
+service_limits:
+  url: https://documentation.commvault.com/clumio/clumio_service_limits.html
+  detail: Operational concurrency and inventory quotas per AWS connection / data plane.
+token_lifecycle:
+  detail: API tokens are long-lived JWTs; Clumio recommends refreshing every three months.
+deprecated_operations: []

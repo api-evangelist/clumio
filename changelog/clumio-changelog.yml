@@ -1,0 +1,37 @@
+generated: '2026-07-18'
+method: searched
+source: https://documentation.commvault.com/clumio/release_notes_for_clumio.html
+scheme: dated-release-notes
+current_version: rolling-saas
+note: >-
+  Clumio is delivered as a continuously updated SaaS platform; changes are published as dated
+  release notes rather than a semantic API version. Recent window captured below.
+entries:
+- date: '2026-07-17'
+  highlights:
+  - Snapshot-only restore introduced for RDS, DocumentDB, and Neptune (backups delivered as snapshots without creating live databases).
+  breaking: false
+- date: '2026-07-03'
+  highlights:
+  - Custom roles reached general availability for tailored access controls.
+  - Protection Rules expanded to include name-based asset matching alongside tag-based conditions.
+  breaking: false
+- date: '2026-06-19'
+  highlights:
+  - Google Cloud Storage backups reached general availability with SecureVault protection.
+  - AWS opt-in regions became self-service enabled by default.
+  - Japanese language support added to the platform interface.
+  breaking: false
+- date: '2026-05-22'
+  highlights:
+  - Three additional AWS regions added — eu-south-1 (Milan), il-central-1 (Tel Aviv), ap-south-2 (Hyderabad).
+  breaking: false
+- date: '2026-05-08'
+  highlights:
+  - Protection Rules extended to support S3 Tables with account, region, and tag-based matching.
+  breaking: false
+- date: '2026-04-24'
+  highlights:
+  - S3 backup retention now configurable in days (30-999 range).
+  - Consumption and Audit Reports gained scheduling with email delivery.
+  breaking: false

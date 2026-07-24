@@ -1,8 +1,15 @@
 aid: clumio
 name: Clumio
-description: 'Clumio is a company surfaced as a portfolio company of index-ventures and added to the API
-  Evangelist network as a stub for enrichment. Sector: data. This profile is a lead awaiting the enrichment
-  pipeline.'
+description: >-
+  Clumio (a Commvault company) is a secure, air-gapped backup-as-a-service platform for the public
+  cloud. It delivers fully managed, immutable data protection and on-demand restore for Amazon Web
+  Services (EBS, EC2, RDS, S3, DynamoDB, DocumentDB, Neptune, Iceberg tables, EC2/RDS MSSQL), Google
+  Cloud Storage, and VMware vCenter workloads. Clumio is API-first: its regional REST API lets teams
+  automate AWS/GCP connections, backup policies and protection rules, protection groups,
+  organizational units, users and roles, compliance reports, audit trails, and restore workflows.
+  Authentication uses long-lived signed-JWT bearer tokens (Personal and Service tokens), responses
+  follow HATEOAS/HAL conventions with `_links`, and the API is versioned per resource. First-party
+  Python and Go SDKs and a Terraform provider are published under the clumio-code GitHub org.
 url: https://raw.githubusercontent.com/api-evangelist/clumio/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -10,18 +17,116 @@ x-backed-by:
 - index-ventures
 x-tier: stub
 x-tier-reason: portfolio-lead
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-18'
+image: https://clumio.com/wp-content/uploads/2021/06/clumio-logo.png
 tags:
 - Company
 - Data
-apis: []
+- Backup
+- Data Protection
+- Disaster Recovery
+- Cloud
+- AWS
+- Storage
+- Security
+- Compliance
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+apis:
+- name: Clumio REST API
+  description: >-
+    Regional REST API for the Clumio backup-as-a-service platform. Manage AWS and GCP connections,
+    backup policies and protection rules, protection groups, organizational units, users, roles,
+    compliance reports, audit trails, tasks, and restore operations for AWS, GCP, and VMware
+    workloads. Authenticated with signed-JWT bearer tokens; HATEOAS/HAL responses; versioned per
+    resource.
+  humanURL: https://developers.clumio.com/reference/introduction
+  baseURL: https://us-west-2.api.clumio.com
+  tags:
+  - Backup
+  - Data Protection
+  - AWS
+  - GCP
+  - VMware
+  properties:
+  - type: Authentication
+    url: authentication/clumio-authentication.yml
+  - type: Conventions
+    url: conventions/clumio-conventions.yml
+  - type: ErrorCatalog
+    url: errors/clumio-error-codes.yml
+  - type: DataModel
+    url: data-model/clumio-data-model.yml
 common:
+- type: DomainSecurity
+  url: security/clumio-domain-security.yml
 - type: Website
-  url: http://clumio.com
+  url: https://clumio.com
+- type: DeveloperPortal
+  url: https://developers.clumio.com/
+- type: Documentation
+  url: https://documentation.commvault.com/clumio/index.html
+- type: APIReference
+  url: https://developers.clumio.com/reference
+- type: GettingStarted
+  url: https://developers.clumio.com/reference/introduction
+- type: Support
+  url: https://help.clumio.com/
+- type: Blog
+  url: https://clumio.com/blog/
+- type: GitHubOrganization
+  url: https://github.com/clumio-code
+- type: Pricing
+  url: https://clumio.com/pricing/
+- type: TermsOfService
+  url: https://www.commvault.com/legal
+- type: PrivacyPolicy
+  url: https://www.commvault.com/privacy-policy/
+- type: StatusPage
+  url: https://status.clumio.com/
+- type: Packages
+  url: packages/clumio-packages.yml
+- type: SDKs
+  url: packages/clumio-packages.yml
+- type: MCPServer
+  url: mcp/clumio-mcp.yml
+- type: LLMsTxt
+  url: llms/clumio-llms.txt
+- type: Conventions
+  url: conventions/clumio-conventions.yml
+- type: ErrorCatalog
+  url: errors/clumio-error-codes.yml
+- type: Lifecycle
+  url: lifecycle/clumio-lifecycle.yml
+- type: ChangeLog
+  url: changelog/clumio-changelog.yml
+- type: Authentication
+  url: authentication/clumio-authentication.yml
+- type: Conformance
+  url: conformance/clumio-conformance.yml
+- type: Compliance
+  url: conformance/clumio-conformance.yml
+- type: DataModel
+  url: data-model/clumio-data-model.yml
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence

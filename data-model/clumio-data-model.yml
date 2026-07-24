@@ -1,0 +1,71 @@
+generated: '2026-07-18'
+method: derived
+source: https://github.com/clumio-code/clumio-go-sdk (controllers/)
+note: >-
+  Entity graph derived from the 108 resource controllers published in the first-party Clumio Go SDK
+  (a faithful proxy for the REST API resource surface, since the OpenAPI is behind auth). Groups the
+  API's nouns and the primary relationships among protection policy, assets, and restores. Not an
+  authoritative provider ERD; ids/prefixes were not fabricated.
+domains:
+- name: Governance
+  entities: [organizational_units, management_groups, management_subgroups, users, roles, auto_user_provisioning_rules, auto_user_provisioning_settings, general_settings, wallets]
+- name: Policy
+  entities: [policy_definitions, policy_rules, policy_assignments]
+- name: Connections
+  entities: [aws_connections, aws_connection_groups, aws_environments, gcp_connections, gcp_projects, vmware_vcenters, aws_cloudformation_templates, aws_templates]
+- name: Assets (AWS)
+  entities: [aws_ebs_volumes, aws_ec2_instances, aws_rds_resources, aws_s3_buckets, aws_dynamodb_tables, aws_documentdb, aws_neptune, aws_iceberg_tables, protection_groups, protection_groups_s3_assets, ec2_mssql_databases, mssql_databases]
+- name: Assets (GCP / VMware)
+  entities: [gcp_gcs_buckets, gcp_gcs_assets, gcp_protection_groups, vmware_vcenter_vms, vmware_vcenter_datastores, vmware_vcenter_datacenters]
+- name: Backups
+  entities: [backup_aws_ebs_volumes, backup_aws_ec2_instances, backup_aws_rds_resources, backup_aws_dynamodb_tables, backup_protection_groups, backup_mssql_databases, backup_vmware_vms, backups_files]
+- name: Restores
+  entities: [restored_aws_ebs_volumes, restored_aws_ec2_instances, restored_aws_rds_resources, restored_aws_s3_buckets, restored_aws_dynamodb_tables, restored_protection_groups, restored_mssql_databases, restored_vmware_vms, restored_files]
+- name: Operations & Reporting
+  entities: [tasks, audit_trails, consolidated_alerts, individual_alerts, report_compliance, report_compliance_runs, report_downloads]
+relationships:
+- from: policy_rules
+  to: policy_definitions
+  kind: belongs_to
+  via: policy_id
+- from: policy_assignments
+  to: policy_definitions
+  kind: belongs_to
+  via: policy_id
+- from: policy_assignments
+  to: protection_groups
+  kind: references
+  via: entity
+- from: aws_environments
+  to: aws_connections
+  kind: belongs_to
+  via: connection_id
+- from: aws_ebs_volumes
+  to: aws_environments
+  kind: belongs_to
+  via: environment_id
+- from: protection_groups_s3_assets
+  to: protection_groups
+  kind: belongs_to
+  via: protection_group_id
+- from: backup_aws_ebs_volumes
+  to: aws_ebs_volumes
+  kind: has_many
+  via: volume_id
+- from: restored_aws_ebs_volumes
+  to: backup_aws_ebs_volumes
+  kind: references
+  via: backup_id
+- from: users
+  to: organizational_units
+  kind: belongs_to
+  via: organizational_unit_id
+- from: policy_definitions
+  to: organizational_units
+  kind: belongs_to
+  via: organizational_unit_id
+- from: tasks
+  to: backup_aws_ebs_volumes
+  kind: tracks
+  via: task_id
+resource_count: 108

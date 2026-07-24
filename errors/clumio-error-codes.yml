@@ -1,0 +1,33 @@
+generated: '2026-07-18'
+method: searched
+source: https://developers.clumio.com/reference/introduction
+format: custom-json
+envelope:
+  shape: '{"errors": [{"error_code": <int>, "error_message": <string>}]}'
+  fields:
+    error_code: Numeric Clumio error code.
+    error_message: Human-readable description of the error.
+  note: >-
+    Errors are returned as a JSON object containing an `errors` array; multiple errors may be
+    returned at once. This is a Clumio-specific envelope, not RFC 9457 application/problem+json.
+  observed_example:
+    request: 'GET https://us-west-2.api.clumio.com/openapi.json (no auth)'
+    status: 403
+    body: '{"errors": [{"error_code": 359, "error_message": "The authentication token is missing"}]}'
+codes:
+- error_code: 359
+  http_status: 403
+  meaning: The authentication token is missing.
+  action: Supply a valid signed-JWT bearer token in the Authorization header.
+  verified: true
+http_status_classes:
+  '400': Bad request — malformed request or invalid parameters/filter.
+  '401': Unauthorized — invalid or expired API token.
+  '403': Forbidden — missing token or insufficient permissions for the resource.
+  '404': Not found — resource does not exist or is not visible to the token's organizational unit.
+  '429': Too many requests — service/concurrency limits exceeded.
+  '500': Internal server error.
+note: >-
+  Only error_code 359 was directly observed against the live API gateway. The numeric error-code
+  registry is documented in the authenticated Clumio REST API reference; additional codes were not
+  captured here to avoid fabrication.

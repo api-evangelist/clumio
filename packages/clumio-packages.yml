@@ -1,0 +1,32 @@
+generated: '2026-07-18'
+method: searched
+source: https://github.com/clumio-code
+packages:
+- language: python
+  registry: github
+  name: clumioapi
+  url: https://github.com/clumio-code/clumio-python-sdk
+  install: pip install 'git+https://github.com/clumio-code/clumio-python-sdk.git@<version>#egg=clumioapi'
+  official: true
+  note: Object-oriented Clumio REST API client. Requires Python 3.6+. Distributed via GitHub (not PyPI).
+- language: go
+  registry: github
+  name: github.com/clumio-code/clumio-go-sdk
+  url: https://github.com/clumio-code/clumio-go-sdk
+  install: go get github.com/clumio-code/clumio-go-sdk
+  official: true
+  note: Go client for the Clumio REST API, covering 100+ resource controllers.
+- language: hcl
+  registry: terraform
+  name: clumio-code/clumio
+  url: https://registry.terraform.io/providers/clumio-code/clumio/latest
+  install: 'terraform { required_providers { clumio = { source = "clumio-code/clumio" } } }'
+  official: true
+  note: Terraform provider for lifecycle management of Clumio resources (connections, policies, rules, protection groups, OUs, users).
+- language: hcl
+  registry: terraform
+  name: clumio-code/terraform-clumio-aws-template
+  url: https://github.com/clumio-code/terraform-clumio-aws-template
+  install: module source github.com/clumio-code/terraform-clumio-aws-template
+  official: true
+  note: Terraform module with the AWS resources required for a Clumio AWS connection.

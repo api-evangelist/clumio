@@ -1,0 +1,71 @@
+generated: '2026-07-18'
+method: searched
+source: https://help.clumio.com/reference/filtering-sorting-and-pagination
+docs:
+- https://developers.clumio.com/reference/introduction
+- https://help.clumio.com/reference/filtering-sorting-and-pagination
+- https://help.clumio.com/docs/api-tokens
+authentication:
+  style: bearer-jwt
+  header: Authorization
+  value: 'Bearer <signed-JWT>'
+  detail: authentication/clumio-authentication.yml
+versioning:
+  scheme: per-resource
+  detail: >-
+    The Clumio REST API is versioned by resource rather than at the API level. Each resource
+    supports one or more versions and is versioned independently, negotiated via the request/response
+    media types (HAL/HATEOAS discovery). SDK accessors reflect this (e.g. policy_definitions_v1).
+  detail_artifact: lifecycle/clumio-lifecycle.yml
+pagination:
+  style: page-number
+  params:
+    limit: Number of items returned per page.
+    start: Page number to traverse to (incremented to move through pages).
+  response_fields:
+    _links._self: Resource path to the current request.
+    _links._next: Path to the next page (increments the start parameter).
+    _links._prev: Path to the previous page.
+  hypermedia: HATEOAS / HAL (_links) navigation on most responses.
+  caveat: >-
+    Pagination consistency is not guaranteed; items inserted or deleted between requests may cause
+    rows to be skipped or duplicated across pages.
+filtering:
+  style: json-filter
+  param: filter
+  detail: >-
+    List operations accept a `filter` argument as a JSON object using snake_case field names and
+    $-prefixed operators, copied 1:1 from the API reference.
+  operators: ['$eq', '$contains', '$in', '$lte', '$gte', '$begins_with']
+  example: '{"aws_region": {"$eq": "us-west-2"}, "bucket_name": {"$contains": "logs"}}'
+sorting:
+  param: sort
+  detail: Supported list endpoints accept a `sort` parameter for ordering results.
+error_envelope:
+  shape: '{"errors": [{"error_code": <int>, "error_message": <string>}]}'
+  format: custom-json
+  note: >-
+    Errors are returned as a JSON object with an `errors` array; each item carries a numeric
+    `error_code` and a human-readable `error_message`. Not RFC 9457 problem+json.
+  detail: errors/clumio-error-codes.yml
+idempotency:
+  supported: false
+  note: >-
+    Clumio does not document an idempotency-key mechanism for its REST API. Long-running write
+    operations return a task resource that can be polled for status (see the `tasks` resource).
+rate_limiting:
+  http_rate_limit_documented: false
+  service_limits: >-
+    Clumio publishes operational concurrency/quotas (e.g. EBS 30 concurrent backups / 5 restores per
+    AWS connection; RDS 5 concurrent operations; DynamoDB 50 parallel backups) rather than an HTTP
+    request-rate limit.
+  service_limits_url: https://documentation.commvault.com/clumio/clumio_service_limits.html
+async_operations:
+  model: task-polling
+  detail: >-
+    Backup, restore, and other long-running operations are asynchronous — the API returns a task
+    resource; poll the `tasks` resource for completion status.
+regions:
+  style: regional-hostnames
+  pattern: https://<aws-region>.api.clumio.com
+  example: https://us-west-2.api.clumio.com

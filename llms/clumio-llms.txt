@@ -1,0 +1,48 @@
+# Clumio
+
+> Clumio (a Commvault company) is a secure, air-gapped backup-as-a-service platform for the public cloud. Its API-first, regional REST API automates immutable data protection and on-demand restore for AWS (EBS, EC2, RDS, S3, DynamoDB, DocumentDB, Neptune, Iceberg, EC2/RDS MSSQL), Google Cloud Storage, and VMware vCenter workloads — covering connections, backup policies and protection rules, protection groups, organizational units, users, roles, compliance reports, audit trails, and restores.
+
+## APIs
+
+- [Clumio REST API — Getting Started](https://developers.clumio.com/reference/introduction): Regional REST API; base host pattern https://<aws-region>.api.clumio.com (e.g. https://us-west-2.api.clumio.com).
+
+## Authentication
+
+- [API tokens](https://help.clumio.com/docs/api-tokens): Long-lived signed-JWT bearer token in the `Authorization: Bearer <token>` header. Personal Tokens for dev/test; Service Tokens for production automation. Refresh every ~3 months.
+
+## Conventions
+
+- Versioning: per-resource, independently versioned, HAL/HATEOAS API discovery.
+- Pagination: `limit` + `start` query params; `_links` with `_self`, `_next`, `_prev`.
+- Filtering: JSON `filter` object with snake_case fields and `$eq`/`$contains`/`$in` operators.
+- Errors: `{"errors":[{"error_code":<int>,"error_message":<string>}]}` (not RFC 9457).
+- Async: long-running backup/restore operations return a task; poll the `tasks` resource.
+
+## Docs
+
+- [Developer Portal](https://developers.clumio.com/)
+- [Clumio Documentation (Commvault)](https://documentation.commvault.com/clumio/index.html)
+- [Release Notes](https://documentation.commvault.com/clumio/release_notes_for_clumio.html)
+- [Service Limits](https://documentation.commvault.com/clumio/clumio_service_limits.html)
+- [Help Center](https://help.clumio.com/)
+- [Status Page](https://status.clumio.com/)
+
+## SDKs
+
+- [Python SDK (clumioapi)](https://github.com/clumio-code/clumio-python-sdk)
+- [Go SDK](https://github.com/clumio-code/clumio-go-sdk)
+- [Terraform Provider](https://registry.terraform.io/providers/clumio-code/clumio/latest)
+- [Terraform Provider MCP Server](https://github.com/clumio-code/clumio-terraform-mcp)
+
+## Compliance
+
+- SOC 2 Type 1/2, ISO/IEC 27001:2013, ISO/IEC 27701:2019, HIPAA, PCI DSS.
+
+## Repo artifacts
+
+- [apis.yml](https://raw.githubusercontent.com/api-evangelist/clumio/refs/heads/main/apis.yml)
+- [Authentication profile](https://raw.githubusercontent.com/api-evangelist/clumio/refs/heads/main/authentication/clumio-authentication.yml)
+- [API conventions](https://raw.githubusercontent.com/api-evangelist/clumio/refs/heads/main/conventions/clumio-conventions.yml)
+- [Error catalog](https://raw.githubusercontent.com/api-evangelist/clumio/refs/heads/main/errors/clumio-error-codes.yml)
+- [Data model](https://raw.githubusercontent.com/api-evangelist/clumio/refs/heads/main/data-model/clumio-data-model.yml)
+- [Packages / SDKs](https://raw.githubusercontent.com/api-evangelist/clumio/refs/heads/main/packages/clumio-packages.yml)

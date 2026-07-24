@@ -1,0 +1,46 @@
+generated: '2026-07-18'
+method: searched
+source: https://clumio.com/blog/data-protection-and-soc-2/
+compliance_program:
+  published: true
+  certifications:
+  - SOC 2 Type 1
+  - SOC 2 Type 2
+  - ISO/IEC 27001:2013
+  - ISO/IEC 27701:2019
+  - HIPAA
+  - PCI DSS
+  note: >-
+    Clumio operates an ISO/IEC 27001:2013 ISMS and an ISO/IEC 27701:2019 PIMS, and is attested for
+    SOC 2 Type 1/2, HIPAA, and PCI DSS. Customer data is confined to a dedicated AWS arena with
+    bring-your-own-key (BYOK) support and immutable, air-gapped storage.
+standards:
+- id: jwt-bearer-auth
+  conforms: true
+  evidence: API authenticated with signed-JWT bearer tokens (RFC 7519 / RFC 6750 style).
+- id: hateoas-hal
+  conforms: true
+  evidence: Responses use HAL-style _links (_self, _next, _prev) for hypermedia navigation.
+- id: oauth2
+  conforms: false
+  evidence: No OAuth2 authorization-server flow; long-lived JWT tokens minted in the UI.
+- id: openid-connect
+  conforms: false
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: Errors use a custom {errors:[{error_code,error_message}]} envelope, not application/problem+json.
+- id: soc2
+  conforms: true
+  evidence: SOC 2 Type 1 and Type 2 attestation published.
+- id: iso-27001
+  conforms: true
+  evidence: ISO/IEC 27001:2013 ISMS.
+- id: iso-27701
+  conforms: true
+  evidence: ISO/IEC 27701:2019 PIMS.
+- id: hipaa
+  conforms: true
+  evidence: HIPAA compliance published.
+- id: pci-dss
+  conforms: true
+  evidence: PCI DSS compliance published.

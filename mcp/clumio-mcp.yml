@@ -1,0 +1,34 @@
+generated: '2026-07-18'
+method: searched
+status: published
+source: https://github.com/clumio-code/clumio-terraform-mcp
+note: >-
+  First-party Model Context Protocol server published by the clumio-code org. It exposes an
+  AI-friendly interface that generates and manages Terraform configurations for the Clumio platform
+  (AWS connections, policies/rules, protection groups, organizational units, users, compliance
+  reports). It is a Terraform-config generator, not a hosted gateway over the live Clumio REST API,
+  and the repository is marked "for example purposes only." Run locally via stdio.
+server:
+  name: clumio-terraform-mcp
+  transport: stdio
+  repository: https://github.com/clumio-code/clumio-terraform-mcp
+  entrypoint: python src/clumio_terraform_mcp/app.py
+tools:
+- name: generate_providers
+  description: Configure the Clumio provider block with variables.
+- name: generate_aws_connection
+  description: Configure Clumio connections to AWS accounts.
+- name: generate_policy
+  description: Create backup policies with retention and RPO settings.
+- name: generate_protection_group
+  description: Define resource groups based on tags, names, or IDs.
+- name: generate_organizational_unit
+  description: Build hierarchical organizational structures.
+- name: generate_policy_rule
+  description: Apply policies to resources through rules.
+- name: generate_user_assignment
+  description: Manage user access and permissions.
+- name: generate_report_configuration
+  description: Create compliance report configurations.
+- name: get_example_scenarios
+  description: Access common use-case examples.
