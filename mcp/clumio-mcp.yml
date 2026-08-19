@@ -2,12 +2,11 @@ generated: '2026-07-18'
 method: searched
 status: published
 source: https://github.com/clumio-code/clumio-terraform-mcp
-note: >-
-  First-party Model Context Protocol server published by the clumio-code org. It exposes an
-  AI-friendly interface that generates and manages Terraform configurations for the Clumio platform
-  (AWS connections, policies/rules, protection groups, organizational units, users, compliance
-  reports). It is a Terraform-config generator, not a hosted gateway over the live Clumio REST API,
-  and the repository is marked "for example purposes only." Run locally via stdio.
+note: First-party Model Context Protocol server published by the clumio-code org. It exposes an AI-friendly
+  interface that generates and manages Terraform configurations for the Clumio platform (AWS connections,
+  policies/rules, protection groups, organizational units, users, compliance reports). It is a Terraform-config
+  generator, not a hosted gateway over the live Clumio REST API, and the repository is marked "for example
+  purposes only." Run locally via stdio.
 server:
   name: clumio-terraform-mcp
   transport: stdio
@@ -32,3 +31,9 @@ tools:
   description: Create compliance report configurations.
 - name: get_example_scenarios
   description: Access common use-case examples.
+deployment:
+  mode: local-stdio
+  verified: searched
+  tools: 9
+  checked: '2026-08-12'
+  source: catalog MCP census
