@@ -3,6 +3,8 @@ method: searched
 checked:
 - https://aws.amazon.com/marketplace/
 - okta/integrations/okta-integration-edges.yml
+- opentofu/integrations/opentofu-integration-edges.yml
+- terraform/integrations/terraform-integration-edges.yml
 marketplace_apps: []
 edges:
 - partner_name: AWS Marketplace
@@ -45,5 +47,41 @@ edges:
   - GROUP_PUSH
   - SAML
   - UPDATE
+- partner_name: OpenTofu (opentofu-registry)
+  partner: opentofu
+  partner_match: mirror
+  mirror_match: register
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: opentofu-registry
+  evidence: https://search.opentofu.org/provider/clumio-code/clumio
+  mirror_of: opentofu/integrations/opentofu-integration-edges.yml
+  apps:
+  - clumio-code/clumio
+  listing_count: 1
+  detected: '2026-10-21'
+  detected_by: mirror-platform-listings.py
+  category: infrastructure-as-code provider registry listing
+- partner_name: Terraform (terraform-registry)
+  partner: terraform
+  partner_match: mirror
+  mirror_match: register
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: terraform-registry
+  evidence: https://registry.terraform.io/providers/clumio-code/clumio
+  mirror_of: terraform/integrations/terraform-integration-edges.yml
+  apps:
+  - clumio-code/clumio
+  listing_count: 1
+  detected: '2026-10-21'
+  detected_by: mirror-platform-listings.py
+  category: infrastructure-as-code provider registry listing
+  badges:
+  - Verified publisher (Terraform partner tier)
 source:
 - okta/integrations/okta-integration-edges.yml
